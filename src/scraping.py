@@ -36,12 +36,18 @@ def extract_data(table_html):
         s_data['name'].append(stock[0].find('a').string)
         s_data['current'].append(stock[1].text.strip() \
             .replace('\r', 'b').replace('\n', '') \
-            .split('b')[0].replace(',','.'))
+            .split('b')[0].replace('.', '') \
+            .replace(',','.')
+            
+            )
         s_data['last_day'].append(stock[1].text.strip() \
             .replace('\r', 'b').replace('\n', '') \
-            .split('b')[1].replace(',','.'))
+            .split('b')[1].replace('.', '') \
+            .replace(',','.')
+            ) 
         s_data['percent_change'].append(stock[4].find_all('span')[1].text \
-            .replace(',','.'))
+            .replace(',','.')
+            )
     
     # convert to df and filter
     s_df = pd.DataFrame.from_dict(s_data)
@@ -50,3 +56,7 @@ def extract_data(table_html):
     s_df["percent_change"] = s_df.percent_change.astype(float)
     s_df = s_df[s_df['percent_change'] <= c.per_threshold]
     return s_df
+
+
+
+

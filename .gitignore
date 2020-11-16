@@ -1,2 +1,10 @@
-env
-config.yaml
+# python
+__pycache__/
+.ipynb_checkpoints
+
+# env and config
+.env
+.venv
+env/
+venv/
+config/config.yaml
