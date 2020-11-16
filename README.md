@@ -1,6 +1,6 @@
 ## Stock Tracker
 
-A stock tracking email service that sends stock drops relatice to a specific reference percentage from the previous day. The data is retrieved from www.finanzen.net. This service can be deployed on AWS (see Setup section).
+A stock tracking email service that sends stock drops relative to a specific reference percentage from the previous day. The data is retrieved from www.finanzen.net. This service can be deployed on AWS (see *setup* section).
 
 ---
 **Setup**
@@ -21,8 +21,9 @@ A stock tracking email service that sends stock drops relatice to a specific ref
             - RECIPIENT1@SAMPLE.com
             - RECIPIENT2@SAMPLE.com
     ```
-5. you can execute the program manually via `python src/main.py`
-6. deployment on AWS:
+5. specifiy the percentage drop in `src/consts.py`
+6. you can execute the program manually via `python src/main.py`
+7. deployment on AWS:
     - step 1
     - step 2
     - step 3
