@@ -8,7 +8,7 @@ A stock tracking email service that sends stock drops relative to a specific ref
 1. create a virtual environment and install required packages: `pip install requirements.txt`
 2. install aws CLI tool: `https://aws.amazon.com/cli/`
 3. create aws credentials file using aws CLI tool by running `aws configure` and entering required information.
-4. create a `config.yaml` file in `config/config.yaml` with following structure:
+4. create a `config.yaml` file in `config/config.yaml` with the following structure:
     ```
     appName: stock_tracker
 
