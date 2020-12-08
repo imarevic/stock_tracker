@@ -33,21 +33,30 @@ def extract_data(table_html):
     }
     # populate dict with data
     for stock in base_elems:
-        s_data['name'].append(stock[0].find('a').string)
-        s_data['current'].append(stock[1].text.strip() \
+
+        stock_values_lst = stock[1].text.strip() \
             .replace('\r', 'b').replace('\n', '') \
-            .split('b')[0].replace('.', '') \
-            .replace(',','.')
-            
-            )
-        s_data['last_day'].append(stock[1].text.strip() \
-            .replace('\r', 'b').replace('\n', '') \
-            .split('b')[1].replace('.', '') \
-            .replace(',','.')
-            ) 
-        s_data['percent_change'].append(stock[4].find_all('span')[1].text \
-            .replace(',','.')
-            )
+            .split('b')
+        
+        if len(stock_values_lst) == 2:
+        
+            s_data['name'].append(stock[0].find('a').string)
+
+            s_data['current'].append(stock[1].text.strip() \
+                .replace('\r', 'b').replace('\n', '') \
+                .split('b')[0].replace('.', '') \
+                .replace(',','.')
+                )
+
+            s_data['last_day'].append(stock[1].text.strip() \
+                .replace('\r', 'b').replace('\n', '') \
+                .split('b')[1].replace('.', '') \
+                .replace(',','.')
+                ) 
+
+            s_data['percent_change'].append(stock[4].find_all('span')[1].text \
+                .replace(',','.')
+                )
     
     # convert to df and filter
     s_df = pd.DataFrame.from_dict(s_data)
